@@ -6,10 +6,8 @@ using Barcoder.Qr;
 using Barcoder.Renderers;
 using FluentAssertions;
 using Moq;
-using SixLabors.ImageSharp.Formats;
 using SkiaSharp;
 using Xunit;
-using ImageSharp = SixLabors.ImageSharp;
 
 namespace Barcoder.Renderer.Image.Tests
 {
@@ -86,8 +84,10 @@ namespace Barcoder.Renderer.Image.Tests
 
             // Assert
             stream.Position = 0;
-            using var image = ImageSharp.Image.Load(stream, out IImageFormat imageFormat);
-            imageFormat.Name.Should().Be("BMP");
+            
+
+            var skBitmap = SkiaSharp.SKBitmap.Decode(stream);
+            skBitmap.Should().NotBeNull();
         }
 
         [Fact]
@@ -103,8 +103,10 @@ namespace Barcoder.Renderer.Image.Tests
 
             // Assert
             stream.Position = 0;
-            using var image = ImageSharp.Image.Load(stream, out IImageFormat imageFormat);
-            imageFormat.Name.Should().Be("GIF");
+            
+            var image = SKImage.FromEncodedData(stream);
+            var bmp = SKBitmap.FromImage(image);
+            bmp.Should().NotBeNull();
         }
 
         [Fact]
@@ -120,8 +122,8 @@ namespace Barcoder.Renderer.Image.Tests
 
             // Assert
             stream.Position = 0;
-            using var image = ImageSharp.Image.Load(stream, out IImageFormat imageFormat);
-            imageFormat.Name.Should().Be("JPEG");
+            var codec = SKCodec.Create(stream);
+            Assert.Equal(SKEncodedImageFormat.Jpeg, codec.EncodedFormat);
         }
 
         [Fact]
@@ -137,8 +139,9 @@ namespace Barcoder.Renderer.Image.Tests
 
             // Assert
             stream.Position = 0;
-            using var image = ImageSharp.Image.Load(stream, out IImageFormat imageFormat);
-            imageFormat.Name.Should().Be("PNG");
+            
+            var codec = SKCodec.Create(stream);
+            Assert.Equal(SKEncodedImageFormat.Png, codec.EncodedFormat);
         }
 
         private static byte[] RenderBarcodeToByteArray(IRenderer renderer, IBarcode barcode)

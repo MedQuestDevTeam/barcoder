@@ -32,10 +32,6 @@ To install the [main package](https://www.nuget.org/packages/Barcoder):
 
     PM> Install-Package Barcoder
 
-To install the SVG renderer:
-
-    PM> Install-Package Barcoder.Renderer.Svg
-
 To install the image renderer[^1]:
 
 	PM> Install-Package Barcoder.Renderer.Image
@@ -57,7 +53,7 @@ using (var reader = new StreamReader(stream))
 }
 ```
 
-## Usage - render to PNG, JPEG, GIF or BMP
+## Usage - render to PNG, JPEG
 
 Example for rendering to PNG:
 
@@ -71,6 +67,8 @@ using (var stream = new FileStream("output.png", FileMode.Create))
 }
 ```
 
-Supported image formats can be found [here](/src/Barcoder.Renderer.Image/ImageFormat.cs)
+For supported image formats please reference to SKEncodedImageFormat except **bmp** and **gif**
 
-[^1]: The `Barcoder.Renderer.Image` package depends on the cross-platform `SixLabors.ImageSharp.Drawing` library. So when using this package, also respect their [LICENSE](https://github.com/SixLabors/ImageSharp.Drawing/blob/master/LICENSE).
+# Hurrah! Fully MIT licensed!
+
+[^1]: The image renderer is now based on [SkiaSharp](https://github.com/mono/SkiaSharp)
