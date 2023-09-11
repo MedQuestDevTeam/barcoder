@@ -1,18 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Title>Barcoder</Title>
-    <Description>Lightweight Barcode Encoding Library for .NET Framework, .NET Standard and .NET Core.</Description>
+    <Title>BarcoderWithSkiaSharp</Title>
+    <Description>Lightweight Barcode Encoding Library for .NET Framework, .NET Standard and .NET Core. Forked from https://github.com/huysentruitw/barcoder and migrate from ImageSharp to SkiaSharp</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>Wouter Huysentruit</Company>
     <Version>1.0.0.0</Version>
-    <Authors>Wouter Huysentruit</Authors>
-    <PackageProjectUrl>https://github.com/huysentruitw/barcoder</PackageProjectUrl>
+    <Authors>MQzhiyong</Authors>
+    <PackageProjectUrl>https://github.com/MQzhiyong/barcoder</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/huysentruitw/barcoder</RepositoryUrl>
+    <RepositoryUrl>https://github.com/MQzhiyong/barcoder</RepositoryUrl>
     <TargetFrameworks>netstandard2.0;net472</TargetFrameworks>
+    <PackageId>BarcoderWithSkiaSharp</PackageId>
   </PropertyGroup>
 
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="2.88.5" />
+  </ItemGroup>
 
 </Project>

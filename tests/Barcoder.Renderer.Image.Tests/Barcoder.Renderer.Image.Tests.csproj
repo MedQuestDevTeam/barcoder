@@ -17,8 +17,9 @@
     </PackageReference>
   </ItemGroup>
 
+
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Barcoder.Renderer.Image\Barcoder.Renderer.Image.csproj" />
+    <ProjectReference Include="..\..\src\Barcoder\Barcoder.csproj" />
   </ItemGroup>
 
 </Project>
