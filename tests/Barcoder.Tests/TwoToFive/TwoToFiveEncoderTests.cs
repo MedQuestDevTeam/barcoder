@@ -13,7 +13,7 @@ namespace Barcoder.Tests.TwoToFive
         [InlineData(false, true, "1234567", "1101101011101010101110101110101011101110111010101010101110101110111010111010101011101110101010101011101110101011101110101101011")]
         public void Encode(bool interleaved, bool includeChecksum, string txt, string testResult)
         {
-            IBarcodeIntCS code = TwoToFiveEncoder.Encode(txt, interleaved, includeChecksum);
+            IBarcodeIntCs code = TwoToFiveEncoder.Encode(txt, interleaved, includeChecksum);
 
             code.Bounds.X.Should().Be(testResult.Length);
             code.Bounds.Y.Should().Be(1);

@@ -31,7 +31,7 @@ namespace Barcoder.UpcA
             if (content.Length == 12)
             {
                 BitList result = EncodeUpcA(content);
-                return new Base1DCodeIntCS(result, BarcodeType.UPCA, content, checksum, Constants.Margin);
+                return new Base1DCodeIntCs(result, BarcodeType.Upca, content, checksum, Constants.Margin);
             }
 
             throw new InvalidOperationException("Invalid content length. Should be 11 if the code does not include a checksum, 12 if the code already includes a checksum");

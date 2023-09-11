@@ -17,7 +17,7 @@ namespace Barcoder.Tests.Code39
             "011010011010101011001101010101001011011011010010110101011001011010100101101101")]
         public void Encode(bool includeChecksum, bool fullAsciiMode, string data, string testResult)
         {
-            IBarcodeIntCS code = Code39Encoder.Encode(data, includeChecksum, fullAsciiMode);
+            IBarcodeIntCs code = Code39Encoder.Encode(data, includeChecksum, fullAsciiMode);
 
             code.Bounds.X.Should().Be(testResult.Length);
             code.Bounds.Y.Should().Be(1);
@@ -34,7 +34,7 @@ namespace Barcoder.Tests.Code39
         [Fact]
         public void Encode_Checksum()
         {
-            IBarcodeIntCS code = Code39Encoder.Encode("5B79AN", true, true);
+            IBarcodeIntCs code = Code39Encoder.Encode("5B79AN", true, true);
             code.Checksum.Should().Be('M');
         }
 

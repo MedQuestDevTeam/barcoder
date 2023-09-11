@@ -2,7 +2,7 @@ namespace Barcoder.RoyalMail
 {
     internal static class Constants
     {
-        internal const int BARCODE_HEIGHT = 8;
+        internal const int BarcodeHeight = 8;
 
         internal static readonly BarTypes[][] Symbols = new BarTypes[][]
         {

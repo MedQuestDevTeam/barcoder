@@ -14,7 +14,7 @@ namespace Barcoder.Pdf417
             _width = width;
             int height = data.Length / width;
             Bounds = new Bounds(width, height * Dimensions.ModuleHeight);
-            Metadata = new Metadata(BarcodeType.PDF417, 2);
+            Metadata = new Metadata(BarcodeType.Pdf417, 2);
         }
 
         public string Content { get; }

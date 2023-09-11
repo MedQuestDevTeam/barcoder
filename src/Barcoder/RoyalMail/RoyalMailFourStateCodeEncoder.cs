@@ -17,7 +17,7 @@ namespace Barcoder.RoyalMail
                 numberOfBars += 6; // start, checksum, stop
 
             var barcodeWidth = numberOfBars * 2 - 1;
-            var bits = new BitList(barcodeWidth * Constants.BARCODE_HEIGHT);
+            var bits = new BitList(barcodeWidth * Constants.BarcodeHeight);
 
             var i = 0;
 

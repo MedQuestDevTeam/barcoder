@@ -2,9 +2,9 @@ using Barcoder.Utils;
 
 namespace Barcoder
 {
-    public class Base1DCodeIntCS : Base1DCode, IBarcodeIntCS
+    public class Base1DCodeIntCs : Base1DCode, IBarcodeIntCs
     {
-        internal Base1DCodeIntCS(BitList bitList, string kind, string content, int checksum, int margin)
+        internal Base1DCodeIntCs(BitList bitList, string kind, string content, int checksum, int margin)
             : base(bitList, kind, content, margin)
         {
             Checksum = checksum;

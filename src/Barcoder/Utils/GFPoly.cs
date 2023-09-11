@@ -3,26 +3,26 @@ using System.Linq;
 
 namespace Barcoder.Utils
 {
-    internal struct GFPoly
+    internal struct GfPoly
     {
         public GaloisField GaloisField;
         public int[] Coefficients;
         
-        public GFPoly(GaloisField galoisField, int[] coefficients)
+        public GfPoly(GaloisField galoisField, int[] coefficients)
         {
             GaloisField = galoisField;
             Coefficients = coefficients.Length > 1 ? coefficients.SkipWhile(x => x == 0).ToArray() : coefficients;
         }
 
-        public static GFPoly Zero(GaloisField galoisField)
-            => new GFPoly(galoisField, new int[] { 0 });
+        public static GfPoly Zero(GaloisField galoisField)
+            => new GfPoly(galoisField, new int[] { 0 });
 
-        public static GFPoly MonominalPoly(GaloisField galoisField, int degree, int coefficient)
+        public static GfPoly MonominalPoly(GaloisField galoisField, int degree, int coefficient)
         {
             if (coefficient == 0) return Zero(galoisField);
             int[] coefficients = new int[degree + 1];
             coefficients[0] = coefficient;
-            return new GFPoly(galoisField, coefficients);
+            return new GfPoly(galoisField, coefficients);
         }
 
         public int Degree() => Coefficients.Length - 1;
@@ -31,7 +31,7 @@ namespace Barcoder.Utils
 
         public int GetCoefficient(int degree) => Coefficients[Degree() - degree];
 
-        public GFPoly AddOrSubtract(GFPoly other)
+        public GfPoly AddOrSubtract(GfPoly other)
         {
             if (IsZero()) return other;
             if (other.IsZero()) return this;
@@ -44,20 +44,20 @@ namespace Barcoder.Utils
             Array.Copy(largeCoefficients, sumDiff, lenDiff);
             for (int i = lenDiff; i < largeCoefficients.Length; i++)
                 sumDiff[i] = GaloisField.AddOrSubtract(smallCoefficients[i - lenDiff], largeCoefficients[i]);
-            return new GFPoly(GaloisField, sumDiff);
+            return new GfPoly(GaloisField, sumDiff);
         }
 
-        public GFPoly MultiplyByMonominal(int degree, int coefficient)
+        public GfPoly MultiplyByMonominal(int degree, int coefficient)
         {
             if (coefficient == 0) return Zero(GaloisField);
             int size = Coefficients.Length;
             int[] coefficients = new int[size + degree];
             for (int i = 0; i < size; i++)
                 coefficients[i] = GaloisField.Multiply(Coefficients[i], coefficient);
-            return new GFPoly(GaloisField, coefficients);
+            return new GfPoly(GaloisField, coefficients);
         }
 
-        public GFPoly Multiply(GFPoly other)
+        public GfPoly Multiply(GfPoly other)
         {
             if (IsZero() || other.IsZero()) return Zero(GaloisField);
             int[] product = new int[Coefficients.Length + other.Coefficients.Length - 1];
@@ -70,21 +70,21 @@ namespace Barcoder.Utils
                     product[i + j] = GaloisField.AddOrSubtract(product[i + j], GaloisField.Multiply(ac, bc));
                 }
             }
-            return new GFPoly(GaloisField, product);
+            return new GfPoly(GaloisField, product);
         }
 
-        public (GFPoly Quotient, GFPoly Remainder) Divide(GFPoly other)
+        public (GfPoly Quotient, GfPoly Remainder) Divide(GfPoly other)
         {
-            GFPoly quotient = Zero(GaloisField);
-            GFPoly remainder = this;
+            GfPoly quotient = Zero(GaloisField);
+            GfPoly remainder = this;
             int denomLeadTerm = other.GetCoefficient(other.Degree());
             int inversDenomLeadTerm = GaloisField.Inverse(denomLeadTerm);
             while (remainder.Degree() >= other.Degree() && !remainder.IsZero())
             {
                 int degreeDiff = remainder.Degree() - other.Degree();
                 int scale = GaloisField.Multiply(remainder.GetCoefficient(remainder.Degree()), inversDenomLeadTerm);
-                GFPoly term = other.MultiplyByMonominal(degreeDiff, scale);
-                GFPoly itQuot = MonominalPoly(GaloisField, degreeDiff, scale);
+                GfPoly term = other.MultiplyByMonominal(degreeDiff, scale);
+                GfPoly itQuot = MonominalPoly(GaloisField, degreeDiff, scale);
                 quotient = quotient.AddOrSubtract(itQuot);
                 remainder = remainder.AddOrSubtract(term);
             }

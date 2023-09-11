@@ -19,7 +19,7 @@ namespace Barcoder.Renderer.Svg
         }
 
         private bool IncludeEanContent(IBarcode barcode)
-            => _options.IncludeEanContentAsText && (barcode.Metadata.CodeKind == BarcodeType.EAN13 || barcode.Metadata.CodeKind == BarcodeType.EAN8);
+            => _options.IncludeEanContentAsText && (barcode.Metadata.CodeKind == BarcodeType.Ean13 || barcode.Metadata.CodeKind == BarcodeType.Ean8);
 
         public void Render(IBarcode barcode, Stream outputStream)
         {
@@ -64,7 +64,7 @@ namespace Barcoder.Renderer.Svg
                 int lineHeight = height;
                 if (IncludeEanContent(barcode))
                 {
-                    if (barcode.Metadata.CodeKind == BarcodeType.EAN13)
+                    if (barcode.Metadata.CodeKind == BarcodeType.Ean13)
                     {
                         if (!Ean13LongerBars.Contains(x))
                         {
@@ -101,7 +101,7 @@ namespace Barcoder.Renderer.Svg
 
             if (IncludeEanContent(barcode))
             {
-                if (barcode.Metadata.CodeKind == BarcodeType.EAN13)
+                if (barcode.Metadata.CodeKind == BarcodeType.Ean13)
                 {
                     AddText(document, 4, 54.5D, barcode.Content.Substring(0, 1));
                     AddText(document, 21, 54.5D, barcode.Content.Substring(1, 6));

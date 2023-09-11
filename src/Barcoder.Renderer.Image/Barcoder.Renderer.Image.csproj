@@ -16,11 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta14" />
+    <ProjectReference Include="..\Barcoder\Barcoder.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Barcoder\Barcoder.csproj" />
+    <PackageReference Include="SkiaSharp" Version="2.88.5" />
+    <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace Barcoder.Renderer.Image
+﻿using SkiaSharp;
+
+namespace Barcoder.Renderer.Image
 {
     public sealed class ImageRendererOptions
     {
@@ -6,7 +8,7 @@
 
         public int BarHeightFor1DBarcode { get; set; } = 40; 
         
-        public ImageFormat ImageFormat { get; set; } = ImageFormat.Png;
+        public SKEncodedImageFormat ImageFormat { get; set; } = SKEncodedImageFormat.Png;
         
         public int JpegQuality { get; set; } = 75;
         

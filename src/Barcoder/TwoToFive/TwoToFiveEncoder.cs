@@ -6,7 +6,7 @@ namespace Barcoder.TwoToFive
 {
     public static class TwoToFiveEncoder
     {
-        public static IBarcodeIntCS Encode(string content, bool interleaved, bool includeChecksum)
+        public static IBarcodeIntCs Encode(string content, bool interleaved, bool includeChecksum)
         {
             if (content == null)
                 throw new ArgumentNullException(nameof(content));
@@ -60,7 +60,7 @@ namespace Barcoder.TwoToFive
 
             resBits.AddBit(mode.End);
 
-            return new Base1DCodeIntCS(resBits, interleaved ? BarcodeType.TwoOfFiveInterleaved : BarcodeType.TwoOfFive, content, checksum, Constants.Margin);
+            return new Base1DCodeIntCs(resBits, interleaved ? BarcodeType.TwoOfFiveInterleaved : BarcodeType.TwoOfFive, content, checksum, Constants.Margin);
         }
 
         private static char GetChecksum(string content)

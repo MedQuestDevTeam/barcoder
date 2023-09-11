@@ -4,10 +4,10 @@ namespace Barcoder.Code93
 {
     internal static class Constants
     {
-        public const char FNC1 = '\u00f1';
-        public const char FNC2 = '\u00f2';
-        public const char FNC3 = '\u00f3';
-        public const char FNC4 = '\u00f4';
+        public const char Fnc1 = '\u00f1';
+        public const char Fnc2 = '\u00f2';
+        public const char Fnc3 = '\u00f3';
+        public const char Fnc4 = '\u00f4';
 
         public static readonly IReadOnlyDictionary<char, (int value, uint data)> EncodingTable = new Dictionary<char, (int, uint)>
         {
@@ -25,8 +25,8 @@ namespace Barcoder.Code93
             { 'X',  (33, 0x166) }, { 'Y',  (34, 0x136) }, { 'Z', (35, 0x13A) },
             { '-',  (36, 0x12E) }, { '.',  (37, 0x1D4) }, { ' ', (38, 0x1D2) },
             { '$',  (39, 0x1CA) }, { '/',  (40, 0x16E) }, { '+', (41, 0x176) },
-            { '%',  (42, 0x1AE) }, { FNC1, (43, 0x126) }, { FNC2, (44, 0x1DA) },
-            { FNC3, (45, 0x1D6) }, { FNC4, (46, 0x132) }, { '*', (47, 0x15E) },
+            { '%',  (42, 0x1AE) }, { Fnc1, (43, 0x126) }, { Fnc2, (44, 0x1DA) },
+            { Fnc3, (45, 0x1D6) }, { Fnc4, (46, 0x132) }, { '*', (47, 0x15E) },
         };
 
         public static readonly string[] ExtendedTable = new[]

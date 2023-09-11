@@ -126,25 +126,25 @@ namespace Barcoder.Code128
         /// <summary>
         /// Special Function 1
         /// </summary>
-        public const char FNC1 = '\u00f1';
+        public const char Fnc1 = '\u00f1';
 
         /// <summary>
         /// Special Function 2
         /// </summary>
-        public const char FNC2 = '\u00f2';
+        public const char Fnc2 = '\u00f2';
 
         /// <summary>
         /// Special Function 3
         /// </summary>
-        public const char FNC3 = '\u00f3';
+        public const char Fnc3 = '\u00f3';
 
         /// <summary>
         /// Special Function 4
         /// </summary>
-        public const char FNC4 = '\u00f4';
+        public const char Fnc4 = '\u00f4';
 
-        public const string ABTable = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_";
-        public const string BTable = ABTable + "`abcdefghijklmnopqrstuvwxyz{|}~\u007F";
+        public const string AbTable = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_";
+        public const string BTable = AbTable + "`abcdefghijklmnopqrstuvwxyz{|}~\u007F";
         public const string AOnlyTable =
             "\u0000\u0001\u0002\u0003\u0004" + // NUL, SOH, STX, ETX, EOT
             "\u0005\u0006\u0007\u0008\u0009" + // ENQ, ACK, BEL, BS,  HT
@@ -153,7 +153,7 @@ namespace Barcoder.Code128
             "\u0014\u0015\u0016\u0017\u0018" + // DC4, NAK, SYN, ETB, CAN
             "\u0019\u001A\u001B\u001C\u001D" + // EM,  SUB, ESC, FS,  GS
             "\u001E\u001F"; // RS,  US
-        public const string ATable = ABTable + AOnlyTable;
+        public const string ATable = AbTable + AOnlyTable;
 
         public const int Margin = 10;
     }

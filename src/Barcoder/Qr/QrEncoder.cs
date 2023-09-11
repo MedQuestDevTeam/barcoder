@@ -45,29 +45,29 @@ namespace Barcoder.Qr
 
             QrCode occupied = new QrCode(dimension);
 
-            void setAll(int x, int y, bool value)
+            void SetAll(int x, int y, bool value)
             {
                 occupied.Set(x, y, true);
                 foreach (QrCode result in results)
                     result.Set(x, y, value);
             }
 
-            DrawFinderPatterns(versionInfo, setAll);
-            DrawAlignmentPatterns(occupied, versionInfo, setAll);
+            DrawFinderPatterns(versionInfo, SetAll);
+            DrawAlignmentPatterns(occupied, versionInfo, SetAll);
 
             // Timing pattern
             for (int i = 0; i < dimension; i++)
             {
                 if (!occupied.Get(i, 6))
-                    setAll(i, 6, i % 2 == 0);
+                    SetAll(i, 6, i % 2 == 0);
                 if (!occupied.Get(6, i))
-                    setAll(6, i, i % 2 == 0);
+                    SetAll(6, i, i % 2 == 0);
             }
 
             // Dark module
-            setAll(8, dimension - 8, true);
+            SetAll(8, dimension - 8, true);
 
-            DrawVersionInfo(versionInfo, setAll);
+            DrawVersionInfo(versionInfo, SetAll);
             DrawFormatInfo(versionInfo, -1, occupied.Set);
             for (int i = 0; i < results.Length; i++)
                 DrawFormatInfo(versionInfo, i, results[i].Set);
@@ -103,7 +103,7 @@ namespace Barcoder.Qr
         private static void DrawFinderPatterns(VersionInfo versionInfo, Action<int, int, bool> set)
         {
             int dim = versionInfo.ModulWidth();
-            void drawPattern(int xoff, int yoff)
+            void DrawPattern(int xoff, int yoff)
             {
                 for (int x = -1; x < 8; x++)
                 {
@@ -115,14 +115,14 @@ namespace Barcoder.Qr
                     }
                 }
             }
-            drawPattern(0, 0);
-            drawPattern(0, dim - 7);
-            drawPattern(dim - 7, 0);
+            DrawPattern(0, 0);
+            DrawPattern(0, dim - 7);
+            DrawPattern(dim - 7, 0);
         }
 
         private static void DrawAlignmentPatterns(QrCode occupied, VersionInfo versionInfo, Action<int, int, bool> set)
         {
-            void drawPattern(int xoff, int yoff)
+            void DrawPattern(int xoff, int yoff)
             {
                 for (int x = -2; x <= 2; x++)
                 {
@@ -140,7 +140,7 @@ namespace Barcoder.Qr
                 {
                     if (occupied.Get(x, y))
                         continue;
-                    drawPattern(x, y);
+                    DrawPattern(x, y);
                 }
             }
         }

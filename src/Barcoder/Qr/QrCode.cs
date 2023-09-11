@@ -11,7 +11,7 @@ namespace Barcoder.Qr
         {
             Dimension = dimension;
             Bounds = new Bounds(Dimension, Dimension);
-            Metadata = new Metadata(BarcodeType.QR, 2);
+            Metadata = new Metadata(BarcodeType.Qr, 2);
             _data = new BitList(Dimension * Dimension);
         }
 

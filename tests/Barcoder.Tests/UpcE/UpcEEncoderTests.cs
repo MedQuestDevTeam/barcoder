@@ -8,9 +8,9 @@ namespace Barcoder.Tests.UpcE
     public sealed class UpcEEncoderTests
     {
         [Theory]
-        [InlineData("654321", UpcENumberSystem.Zero, "101000010101100010011101011110100110110011001010101", BarcodeType.UPCE)]
-        [InlineData("654321", UpcENumberSystem.One, "101010111101110010100011011110100110110110011010101", BarcodeType.UPCE)]
-        [InlineData("123456", UpcENumberSystem.Zero, "101011001100100110111101001110101110010101111010101", BarcodeType.UPCE)]
+        [InlineData("654321", UpcENumberSystem.Zero, "101000010101100010011101011110100110110011001010101", BarcodeType.Upce)]
+        [InlineData("654321", UpcENumberSystem.One, "101010111101110010100011011110100110110110011010101", BarcodeType.Upce)]
+        [InlineData("123456", UpcENumberSystem.Zero, "101011001100100110111101001110101110010101111010101", BarcodeType.Upce)]
         public void Encode(string testCode, UpcENumberSystem numberSystem, string testResult, string kind)
         {
             IBarcode code = UpcEEncoder.Encode(testCode, numberSystem);

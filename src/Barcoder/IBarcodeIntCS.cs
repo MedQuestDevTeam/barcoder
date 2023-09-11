@@ -1,6 +1,6 @@
 ﻿namespace Barcoder
 {
-    public interface IBarcodeIntCS : IBarcode
+    public interface IBarcodeIntCs : IBarcode
     {
         int Checksum { get; }
     }

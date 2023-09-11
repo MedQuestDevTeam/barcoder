@@ -8,12 +8,12 @@ namespace Barcoder.Tests.Ean
     public sealed class EanEncoderTests
     {
         [Theory]
-        [InlineData("5901234123457", "10100010110100111011001100100110111101001110101010110011011011001000010101110010011101000100101", BarcodeType.EAN13, true)]
-        [InlineData("55123457", "1010110001011000100110010010011010101000010101110010011101000100101", BarcodeType.EAN8, true)]
-        [InlineData("5512345", "1010110001011000100110010010011010101000010101110010011101000100101", BarcodeType.EAN8, false)]
+        [InlineData("5901234123457", "10100010110100111011001100100110111101001110101010110011011011001000010101110010011101000100101", BarcodeType.Ean13, true)]
+        [InlineData("55123457", "1010110001011000100110010010011010101000010101110010011101000100101", BarcodeType.Ean8, true)]
+        [InlineData("5512345", "1010110001011000100110010010011010101000010101110010011101000100101", BarcodeType.Ean8, false)]
         public void Encode(string testCode, string testResult, string kind, bool checkContent)
         {
-            IBarcodeIntCS code = EanEncoder.Encode(testCode);
+            IBarcodeIntCs code = EanEncoder.Encode(testCode);
             if (checkContent)
                 code.Content.Should().Be(testCode);
 

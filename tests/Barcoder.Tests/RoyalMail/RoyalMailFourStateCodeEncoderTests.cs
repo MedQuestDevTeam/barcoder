@@ -29,7 +29,7 @@ namespace Barcoder.Tests.RoyalMail
 
             // Assert
             royalMailCode.Should().NotBeNull();
-            royalMailCode.Metadata.CodeKind.Should().Be(BarcodeType.RM4SC);
+            royalMailCode.Metadata.CodeKind.Should().Be(BarcodeType.Rm4Sc);
             expectedDataBits.Length.Should().Be(royalMailCode.Bounds.X * royalMailCode.Bounds.Y);
             for (int i = 0; i < expectedDataBits.Length; i++)
             {

@@ -12,8 +12,8 @@ namespace Barcoder.RoyalMail
             Content = content;
             _data = data;
             _width = width;
-            Bounds = new Bounds(width, Constants.BARCODE_HEIGHT);
-            Metadata = new Metadata(BarcodeType.RM4SC, 2);
+            Bounds = new Bounds(width, Constants.BarcodeHeight);
+            Metadata = new Metadata(BarcodeType.Rm4Sc, 2);
         }
 
         public string Content { get; }

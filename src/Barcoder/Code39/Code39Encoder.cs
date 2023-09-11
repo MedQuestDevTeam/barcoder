@@ -7,7 +7,7 @@ namespace Barcoder.Code39
 {
     public static class Code39Encoder
     {
-        public static IBarcodeIntCS Encode(string content, bool includeChecksum, bool fullAsciiMode)
+        public static IBarcodeIntCs Encode(string content, bool includeChecksum, bool fullAsciiMode)
         {
             if (content == null)
                 throw new ArgumentNullException(nameof(content));
@@ -38,7 +38,7 @@ namespace Barcoder.Code39
                 result.AddBit(info.data);
             }
 
-            return new Base1DCodeIntCS(result, BarcodeType.Code39, content, checksum, Constants.Margin);
+            return new Base1DCodeIntCs(result, BarcodeType.Code39, content, checksum, Constants.Margin);
         }
 
         private static string Prepare(string content)

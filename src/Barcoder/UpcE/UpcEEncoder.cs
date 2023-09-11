@@ -21,7 +21,7 @@ namespace Barcoder.UpcE
                 throw new InvalidOperationException("Invalid content length. Should be 6");
 
             BitList bitlist = EncodeUpcE(content, numberSystem);
-            return new Base1DCode(bitlist, BarcodeType.UPCE, content, Constants.Margin);
+            return new Base1DCode(bitlist, BarcodeType.Upce, content, Constants.Margin);
         }
 
         private static BitList EncodeUpcE(string content, UpcENumberSystem numberSystem)

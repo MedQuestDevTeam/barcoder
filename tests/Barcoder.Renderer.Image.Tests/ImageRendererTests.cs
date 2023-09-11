@@ -7,6 +7,7 @@ using Barcoder.Renderers;
 using FluentAssertions;
 using Moq;
 using SixLabors.ImageSharp.Formats;
+using SkiaSharp;
 using Xunit;
 using ImageSharp = SixLabors.ImageSharp;
 
@@ -76,7 +77,7 @@ namespace Barcoder.Renderer.Image.Tests
         public void Render_ImageFormatBmp_ShouldRenderBmp()
         {
             // Arrange
-            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = ImageFormat.Bmp });
+            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = SKEncodedImageFormat.Bmp });
             IBarcode barcode = QrEncoder.Encode("Hello", ErrorCorrectionLevel.L, Encoding.Unicode);
             using var stream = new MemoryStream();
 
@@ -93,7 +94,7 @@ namespace Barcoder.Renderer.Image.Tests
         public void Render_ImageFormatGif_ShouldRenderGif()
         {
             // Arrange
-            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = ImageFormat.Gif });
+            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = SKEncodedImageFormat.Gif });
             IBarcode barcode = QrEncoder.Encode("Hello", ErrorCorrectionLevel.L, Encoding.Unicode);
             using var stream = new MemoryStream();
 
@@ -110,7 +111,7 @@ namespace Barcoder.Renderer.Image.Tests
         public void Render_ImageFormatJpeg_ShouldRenderJpeg()
         {
             // Arrange
-            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = ImageFormat.Jpeg });
+            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = SKEncodedImageFormat.Jpeg });
             IBarcode barcode = QrEncoder.Encode("Hello", ErrorCorrectionLevel.L, Encoding.Unicode);
             using var stream = new MemoryStream();
 
@@ -127,7 +128,7 @@ namespace Barcoder.Renderer.Image.Tests
         public void Render_ImageFormatPng_ShouldRenderPng()
         {
             // Arrange
-            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = ImageFormat.Png });
+            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = SKEncodedImageFormat.Png });
             IBarcode barcode = QrEncoder.Encode("Hello", ErrorCorrectionLevel.L, Encoding.Unicode);
             using var stream = new MemoryStream();
 
@@ -150,7 +151,7 @@ namespace Barcoder.Renderer.Image.Tests
         [Fact(Skip = "Integration test")]
         public void Render_Ean8_IncludeContentAsText()
         {
-            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = ImageFormat.Png, IncludeEanContentAsText = true });
+            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = SKEncodedImageFormat.Png, IncludeEanContentAsText = true });
             IBarcode barcode = EanEncoder.Encode("1234567");
             using Stream stream = File.OpenWrite(@"d:\temp\ean8-test.png");
             renderer.Render(barcode, stream);
@@ -159,7 +160,7 @@ namespace Barcoder.Renderer.Image.Tests
         [Fact(Skip = "Integration test")]
         public void Render_Ean13_IncludeContentAsText()
         {
-            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = ImageFormat.Png, IncludeEanContentAsText = true });
+            var renderer = new ImageRenderer(new ImageRendererOptions { ImageFormat = SKEncodedImageFormat.Png, IncludeEanContentAsText = true });
             IBarcode barcode = EanEncoder.Encode("978020137962");
             using Stream stream = File.OpenWrite(@"d:\temp\ean13-test.png");
             renderer.Render(barcode, stream);

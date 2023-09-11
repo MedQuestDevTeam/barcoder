@@ -62,7 +62,7 @@ namespace Barcoder.DataMatrix
                     i++;
                     result.Add((byte)((c - '0') * 10 + (c2 - '0') + 130));
                 }
-                else if (c == DataMatrixSpecialCodewords.FNC1 && skipFnc1)
+                else if (c == DataMatrixSpecialCodewords.Fnc1 && skipFnc1)
                 {
                     result.Add((byte)c);
                 }
@@ -81,7 +81,7 @@ namespace Barcoder.DataMatrix
         }
 
         internal static byte[] EncodeGs1(string content)
-            => EncodeText(Gs1Encoder.Encode(content, (char)DataMatrixSpecialCodewords.FNC1), skipFnc1: true);
+            => EncodeText(Gs1Encoder.Encode(content, (char)DataMatrixSpecialCodewords.Fnc1), skipFnc1: true);
 
         internal static byte[] AddPadding(byte[] data, int toCount)
         {
